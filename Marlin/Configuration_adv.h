@@ -1251,10 +1251,10 @@
 
   // Allow language selection from menu at run-time (otherwise use LCD_LANGUAGE)
   //#define LCD_LANGUAGE_1 en
-  //#define LCD_LANGUAGE_2 fr
-  //#define LCD_LANGUAGE_3 de
-  //#define LCD_LANGUAGE_4 es
-  //#define LCD_LANGUAGE_5 it
+  //#define LCD_LANGUAGE_2 pt
+  //#define LCD_LANGUAGE_3 nl
+  //#define LCD_LANGUAGE_4 de
+  //#define LCD_LANGUAGE_5 pl
 
   // Use a numeric passcode for "Screen lock" keypad.
   // (recommended for smaller displays)
