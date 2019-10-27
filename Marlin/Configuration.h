@@ -478,9 +478,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // BIQU Legend
-  #define DEFAULT_Kp 24.35
-  #define DEFAULT_Ki 2.34
-  #define DEFAULT_Kd 63.38
+  #define DEFAULT_Kp 22.11
+  #define DEFAULT_Ki 2.06
+  #define DEFAULT_Kd 59.32
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
