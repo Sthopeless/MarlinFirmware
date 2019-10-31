@@ -516,11 +516,11 @@
 // @section homing
 
 // Homing hits each endstop, retracts by these distances, then does a slower bump.
-#define X_HOME_BUMP_MM 5
-#define Y_HOME_BUMP_MM 5
+#define X_HOME_BUMP_MM 0
+#define Y_HOME_BUMP_MM 0
 #define Z_HOME_BUMP_MM 2
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
-//#define QUICK_HOME                     // If homing includes X and Y, do a diagonal move initially
+#define QUICK_HOME                     // If homing includes X and Y, do a diagonal move initially
 //#define HOMING_BACKOFF_MM { 2, 2, 2 }  // (mm) Move away from the endstops after homing
 
 // When G28 is called, this option will make Y home before X
@@ -904,7 +904,7 @@
 
 #if HAS_PRINT_PROGRESS
   //#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits (Graphical LCD only)
-  //#define SHOW_REMAINING_TIME          // Display estimated time to completion (Graphical LCD only)
+  #define SHOW_REMAINING_TIME          // Display estimated time to completion (Graphical LCD only)
 #endif
 
 #if HAS_CHARACTER_LCD && HAS_PRINT_PROGRESS
@@ -990,7 +990,7 @@
   #if ENABLED(SDCARD_SORT_ALPHA)
     #define SDSORT_LIMIT       40     // Maximum number of sorted items (10-256). Costs 27 bytes each.
     #define FOLDER_SORTING     -1     // -1=above  0=none  1=below
-    #define SDSORT_GCODE       false  // Allow turning sorting on/off with LCD and M34 g-code.
+    #define SDSORT_GCODE       true  // Allow turning sorting on/off with LCD and M34 g-code.
     #define SDSORT_USES_RAM    false  // Pre-allocate a static array for faster pre-sorting.
     #define SDSORT_USES_STACK  false  // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
     #define SDSORT_CACHE_NAMES false  // Keep sorted items in RAM longer for speedy performance. Most expensive option.
@@ -1088,7 +1088,7 @@
      *
      * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
      */
-    //#define SDCARD_CONNECTION LCD
+    #define SDCARD_CONNECTION ONBOARD
   #endif
 
 #endif // SDSUPPORT
@@ -1170,14 +1170,14 @@
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
-  //#define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
+  #define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
   //#define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
 
   // Frivolous Game Options
-  //#define MARLIN_BRICKOUT
-  //#define MARLIN_INVADERS
-  //#define MARLIN_SNAKE
-  //#define GAMES_EASTER_EGG          // Add extra blank lines above the "Games" sub-menu
+  #define MARLIN_BRICKOUT
+  #define MARLIN_INVADERS
+  #define MARLIN_SNAKE
+  #define GAMES_EASTER_EGG          // Add extra blank lines above the "Games" sub-menu
 
 #endif // HAS_GRAPHICAL_LCD
 
@@ -1313,7 +1313,7 @@
     #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
                                             // Note: Extra time may be added to mitigate controller latency.
     #define BABYSTEP_ALWAYS_AVAILABLE     // Allow babystepping at all times (not just during movement).
-    #define MOVE_Z_WHEN_IDLE              // Jump to the move Z menu on doubleclick when printer is idle.
+    //#define MOVE_Z_WHEN_IDLE              // Jump to the move Z menu on doubleclick when printer is idle.
     #if ENABLED(MOVE_Z_WHEN_IDLE)
       #define MOVE_Z_IDLE_MULTIPLICATOR 1   // Multiply 1mm by this factor for the move step size.
     #endif
@@ -1675,14 +1675,14 @@
   #define FILAMENT_CHANGE_FAST_LOAD_LENGTH     0  // (mm) Load length of filament, from extruder gear to nozzle.
                                                   //   For Bowden, the full length of the tube and nozzle.
                                                   //   For direct drive, the full length of the nozzle.
-  //#define ADVANCED_PAUSE_CONTINUOUS_PURGE       // Purge continuously up to the purge length until interrupted.
+  #define ADVANCED_PAUSE_CONTINUOUS_PURGE       // Purge continuously up to the purge length until interrupted.
   #define ADVANCED_PAUSE_PURGE_FEEDRATE        3  // (mm/s) Extrude feedrate (after loading). Should be slower than load feedrate.
   #define ADVANCED_PAUSE_PURGE_LENGTH         50  // (mm) Length to extrude after loading.
                                                   //   Set to 0 for manual extrusion.
                                                   //   Filament can be extruded repeatedly from the Filament Change menu
                                                   //   until extrusion is consistent, and to purge old filament.
   #define ADVANCED_PAUSE_RESUME_PRIME          0  // (mm) Extra distance to prime nozzle after returning from park.
-  //#define ADVANCED_PAUSE_FANS_PAUSE             // Turn off print-cooling fans while the machine is paused.
+  #define ADVANCED_PAUSE_FANS_PAUSE             // Turn off print-cooling fans while the machine is paused.
 
                                                   // Filament Unload does a Retract, Delay, and Purge first:
   #define FILAMENT_UNLOAD_RETRACT_LENGTH      13  // (mm) Unload initial retract length.
@@ -1817,7 +1817,7 @@
     #define X_CURRENT     800  // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_MICROSTEPS   16  // 0..256
     #define X_RSENSE     0.11
-    #define X_CHAIN_POS    -1  // <=0 : Not chained. 1 : MCU MOSI connected. 2 : Next in chain, ...
+    #define X_CHAIN_POS     0  // <=0 : Not chained. 1 : MCU MOSI connected. 2 : Next in chain, ...
   #endif
 
   #if AXIS_IS_TMC(X2)
@@ -1831,7 +1831,7 @@
     #define Y_CURRENT     800
     #define Y_MICROSTEPS   16
     #define Y_RSENSE     0.11
-    #define Y_CHAIN_POS    -1
+    #define Y_CHAIN_POS     0
   #endif
 
   #if AXIS_IS_TMC(Y2)
@@ -1845,7 +1845,7 @@
     #define Z_CURRENT     800
     #define Z_MICROSTEPS   16
     #define Z_RSENSE     0.11
-    #define Z_CHAIN_POS    -1
+    #define Z_CHAIN_POS     0
   #endif
 
   #if AXIS_IS_TMC(Z2)
@@ -1866,7 +1866,7 @@
     #define E0_CURRENT    800
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
-    #define E0_CHAIN_POS   -1
+    #define E0_CHAIN_POS    0
   #endif
 
   #if AXIS_IS_TMC(E1)
@@ -1989,7 +1989,7 @@
    * Define you own with
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
 
   /**
    * Monitor Trinamic drivers for error conditions,
@@ -2002,7 +2002,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
@@ -2056,7 +2056,7 @@
    * IMPROVE_HOMING_RELIABILITY tunes acceleration and jerk when
    * homing and adds a guard period for endstop triggering.
    */
-  //#define SENSORLESS_HOMING // StallGuard capable drivers only
+  #define SENSORLESS_HOMING // StallGuard capable drivers only
 
   /**
    * Use StallGuard2 to probe the bed with the nozzle.
@@ -2086,7 +2086,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * You can set your own advanced settings by filling in predefined functions.
